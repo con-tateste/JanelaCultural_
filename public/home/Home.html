@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janela Cultural</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">JanelaCultural</span>
+            </div>
+            <nav class="nav">
+                <a href="/paginas/home/Home.html" class="nav-link">Início</a>
+                <a href="/paginas/pagina exibição de eventos/exibição_eventos.html" class="nav-link">Eventos</a>
+                <a href="/paginas/pagina saiba mais/saiba_mais.html" class="nav-link">Sobre nós</a>
+                <a href="/paginas/cadastro de evntos/cadastro_evento.html" class="nav-link">Criar evento</a>
+                <a href="/paginas/pagina de cadastro/login.html" id="botao_entrar" class="nav-link">Entrar</a>
+                <a href="/paginas/pagina de cadastro/cadastro.html" id="botao_cadastar"
+                    class="nav-link btn-contact">Cadastre-se</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Principal -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Encontre eventos<br>incríveis perto de você!</h1>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar eventos...">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Categorias -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Categorias</h2>
+            <div class="categories-grid">
+                <div class="category-item" data-categoria="oficinas culturais e criativas">
+                    <div class="category-icon">🎭</div>
+                    <span>Oficinas Culturais e Criativas</span>
+                </div>
+                <div class="category-item" data-categoria="palestras e debates">
+                    <div class="category-icon">🗣️</div>
+                    <span>Palestras e Debates</span>
+                </div>
+                <div class="category-item" data-categoria="orientação jurídica e direitos">
+                    <div class="category-icon">⚖️</div>
+                    <span>Orientação Jurídica e Direitos</span>
+                </div>
+                <div class="category-item" data-categoria="formação e educação">
+                    <div class="category-icon">✏️</div>
+                    <span>Formação e Educação</span>
+                </div>
+                <div class="category-item" data-categoria="espaços de escuta e apoio">
+                    <div class="category-icon">🫶🏾</div>
+                    <span>Espaços de escuta e apoio</span>
+                </div>
+                <div class="category-item" data-categoria="sáude e bem estar">
+                    <div class="category-icon">⚕️</div>
+                    <span>Saúde e Bem Estar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Presenciais -->
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Eventos presenciais</h2>
+            <div class="events-grid" id="eventosPresenciais">
+                <!-- Eventos serão carregados dinamicamente aqui -->
+            </div>
+            <div class="view-more">
+                <button class="btn-view-more" onclick="window.location.href='/paginas/pagina exibição de eventos/exibição_eventos.html'">Ver mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Online -->
+    <section class="events online-events">
+        <div class="container">
+            <h2 class="section-title">Eventos online</h2>
+            <div class="events-grid" id="eventosOnline">
+                <!-- Eventos serão carregados dinamicamente aqui -->
+            </div>
+            <div class="view-more">
+                <button class="btn-view-more" onclick="window.location.href='/paginas/pagina exibição de eventos/exibição_eventos.html'">Ver mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Criar Evento -->
+    <section class="create-event">
+        <div class="container">
+            <div class="create-event-content">
+                <h2>Crie um evento com a gente!</h2>
+                <button class="btn-create-event">Criar evento</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li>Oficinas Culturais e Criativas</li>
+                        <li>Palestras e Debates</li>
+                        <li>Orientação Jurídica e Direitos</li>
+                        <li>Formação e Educação</li>
+                        <li>Espaços de escuta e apoio</li>
+                        <li>Saúde e Bem Estar</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>Janela Cultural</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/paginas/home/index.js"></script>
+    <script src="/verificar_login.js"></script>
+    <script src="/verificar_acesso_evento.js"></script>
+</body>
+
+</html>

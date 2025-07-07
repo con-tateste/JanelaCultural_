@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Evento - JanelaCultural</title>
+    <link rel="stylesheet" href="/css/detalhe_evento.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">JanelaCultural</span>
+            </div>
+            <nav class="nav">
+                <a href="/paginas/home/Home.html" class="nav-link">Início</a>
+                <a href="/paginas/pagina exibição de eventos/exibição_eventos.html" class="nav-link">Eventos</a>
+                <a href="/paginas/pagina saiba mais/saiba_mais.html" class="nav-link">Sobre nós</a>
+                <a href="/paginas/cadastro de evntos/cadastro_evento.html" class="nav-link">Criar evento</a>
+                <a href="/paginas/pagina de cadastro/login.html" id="botao_entrar" class="nav-link">Entrar</a>
+                <a href="/paginas/pagina de cadastro/cadastro.html" id="botao_cadastar"
+                    class="nav-link btn-contact">Cadastre-se</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Event Page Content -->
+    <main class="event-page">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="/paginas/home/Home.html">JanelaCultural</a>
+                <span>></span>
+                <a href="/paginas/pagina exibição de eventos/exibição_eventos.html">Eventos</a>
+                <span>></span>
+                <span id="breadcrumb-evento">Carregando...</span>
+            </nav>
+
+            <!-- Event Hero -->
+            <section class="event-hero">
+                <div class="event-hero-content">
+                    <span class="event-category" id="event-category">Carregando...</span>
+                    <h1 class="event-title" id="event-title">Carregando...</h1>
+                    <!-- Removido a descrição daqui - será mostrada apenas na seção de descrição -->
+                </div>
+                <div class="event-flag"></div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="event-details">
+                <!-- Main Content -->
+                <div class="event-main">
+                    <h2 class="section-title">Descrição do evento</h2>
+                    <div id="event-description">
+                        <p>Carregando descrição do evento...</p>
+                    </div>
+
+                    <div class="tags-container" id="tags-container">
+                        <!-- Tags serão geradas dinamicamente -->
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="event-sidebar">
+                    <!-- Event Info -->
+                    <div class="info-card">
+                        <h3>📅 Data e hora</h3>
+                        <div class="info-item">
+                            <span class="info-icon">📅</span>
+                            <div id="event-date">
+                                <strong>Carregando...</strong><br>
+                                <small>Carregando...</small>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span id="event-time">Carregando...</span>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="info-card">
+                        <h3>📍 Localização</h3>
+                        <div class="info-item">
+                            <span class="info-icon" id="location-icon">📍</span>
+                            <span id="location-type">Carregando...</span>
+                        </div>
+                        <div class="map-container" id="location-details">
+                            Carregando detalhes do local...
+                        </div>
+                    </div>
+
+                    <!-- Registration -->
+                    <div class="info-card">
+                        <h3>🎫 Inscrições</h3>
+                        <div class="info-item">
+                            <span class="info-icon">✅</span>
+                            <span id="vagas-status">Carregando...</span>
+                        </div>
+                        <button class="btn-register" id="btn-register" onclick="registerForEvent()">
+                            Carregando...
+                        </button>
+                    </div>
+
+                    <!-- Organizer -->
+                    <div class="info-card organizer-card">
+                        <h3>👤 Organizado por:</h3>
+                        <div class="organizer-avatar" id="organizer-avatar">--</div>
+                        <strong id="organizer-name">Carregando...</strong>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li>Oficinas Culturais e Criativas</li>
+                        <li>Palestras e Debates</li>
+                        <li>Orientação Jurídica e Direitos</li>
+                        <li>Formação e Educação</li>
+                        <li>Espaços de escuta e apoio</li>
+                        <li>Saúde e Bem Estar</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>Janela Cultural</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="detalhe_evento.js"></script>
+    <script src="/verificar_login.js"></script>
+    <script src="/verificar_acesso_evento.js"></script>
+</body>
+
+</html>

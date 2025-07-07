@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - JanelaCultural</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/exibição_eventos.css">
+</head>
+
+<body>
+    <div id="modalEvento" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" id="fecharModal">&times;</span>
+            <h2 id="tituloModal"></h2>
+            <p><strong>Local:</strong> <span id="localModal"></span></p>
+            <p><strong>Data:</strong> <span id="dataModal"></span></p>
+            <p><strong>Hora:</strong> <span id="horaModal"></span></p>
+            <p><strong>Preço:</strong> <span id="precoModal"></span></p>
+            <p><strong>Tipo:</strong> <span id="tipoModal"></span></p>
+            <p><strong>Categoria:</strong> <span id="categoriaModal"></span></p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">JanelaCultural</span>
+            </div>
+            <nav class="nav">
+                <a href="/paginas/home/Home.html" class="nav-link">Início</a>
+                <a href="/paginas/pagina exibição de eventos/exibição_eventos.html" class="nav-link">Eventos</a>
+                <a href="/paginas/pagina saiba mais/saiba_mais.html" class="nav-link">Sobre nós</a>
+                <a href="/paginas/cadastro de evntos/cadastro_evento.html" class="nav-link">Criar evento</a>
+                <a href="/paginas/pagina de cadastro/login.html" id="botao_entrar" class="nav-link">Entrar</a>
+                <a href="/paginas/pagina de cadastro/cadastro.html" id="botao_cadastar"
+                    class="nav-link btn-contact">Cadastre-se</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-layout">
+                <aside class="sidebar">
+                    <h3>Filtros</h3>
+                    <div class="filter-section">
+                        <h4>Tipo de Evento</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="todos-tipos" checked>
+                                <span>Todos os tipos</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="presencial">
+                                <span>📍 Presencial</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="online">
+                                <span>💻 Online</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4>Categoria</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="todos" checked>
+                                <span>Todos os eventos</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="palestras e debates">
+                                <span>Palestras e Debates</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="oficinas culturais e criativas">
+                                <span>Oficinas Culturais e Criativas</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="formação e educação">
+                                <span>Formação e Educação</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="espaços de escuta e apoio">
+                                <span>Espaços de escuta e apoio</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="sáude e bem estar">
+                                <span>Saúde e Bem Estar</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="orientação jurídica e direitos">
+                                <span>Orientação Jurídica e Direitos</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="events-content">
+                    <div class="events-header">
+                        <h1>Todos os Eventos</h1>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Buscar eventos..." id="inputBusca">
+                            <button class="search-btn" id="botaoBusca">🔍</button>
+                        </div>
+                    </div>
+
+                    <div class="events-grid" id="gradeEventos">
+                        <!-- Eventos serão carregados dinamicamente aqui -->
+                    </div>
+
+                    <div class="pagination">
+                        <button class="btn-pagination" id="botaoAnterior">← Anterior</button>
+                        <div class="page-numbers" id="numeroPaginas"></div>
+                        <button class="btn-pagination" id="botaoProximo">Próximo →</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li>Oficinas Culturais e Criativas</li>
+                        <li>Palestras e Debates</li>
+                        <li>Orientação Jurídica e Direitos</li>
+                        <li>Formação e Educação</li>
+                        <li>Espaços de escuta e apoio</li>
+                        <li>Saúde e Bem Estar</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>Janela Cultural</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="exibição_eventos.js"></script>
+    <script src="/verificar_login.js"></script>
+    <script src="/verificar_acesso_evento.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Janela Cultural</title>
+    <link rel="stylesheet" href="/css/cadastro.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">JanelaCultural</span>
+            </div>
+            <nav class="nav">
+                <a href="/paginas/home/Home.html" class="nav-link">Início</a>
+                <a href="/paginas/pagina exibição de eventos/exibição_eventos.html" class="nav-link">Eventos</a>
+                <a href="/paginas/pagina saiba mais/saiba_mais.html" class="nav-link">Sobre nós</a>
+                <a href="/paginas/cadastro de evntos/cadastro_evento.html" class="nav-link">Criar evento</a>
+                <a href="/paginas/pagina de cadastro/login.html" class="nav-link">Entrar</a>
+                <a href="/paginas/pagina de cadastro/cadastro.html" class="nav-link btn-contact">Cadastre-se</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-info">
+                <h1>Descubra eventos que combinam com você.</h1>
+                <p>Crie sua conta agora!</p>
+            </div>
+
+            <div class="auth-form-container">
+                <div class="auth-form">
+                    <h2>Criar Conta</h2>
+                    <p class="auth-subtitle">Faça seu cadastro</p>
+
+                    <form id="formCadastro" class="form">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmarSenha">Confirmar senha</label>
+                            <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                        </div>
+
+                        <button type="submit" class="btn-auth">Criar Conta</button>
+                    </form>
+
+                    <div class="auth-switch">
+                        <p>Já tem uma conta? <a href="login.html">Fazer login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="cadastro.js"></script>
+    <script src="/verificar_login.js"></script>
+    <script src="/verificar_acesso_evento.js"></script>
+</body>
+
+</html>

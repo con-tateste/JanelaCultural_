@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Inscritos - Janela Cultural</title>
+    <link rel="stylesheet" href="/css/exibição_eventos.css">
+    <style>
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="events-header">
+            <h1>Eventos Inscritos</h1>
+        </header>
+        
+        <div class="debug-info" id="debugInfo">
+            Carregando informações de debug...
+        </div>
+        
+        <div class="events-grid" id="gradeEventos">
+            <!-- Eventos serão carregados aqui -->
+        </div>
+        
+        <div class="pagination">
+            <button id="botaoAnterior">Anterior</button>
+            <div id="numeroPaginas"></div>
+            <button id="botaoProximo">Próximo</button>
+        </div>
+    </div>
+
+    <script>
+        // Script de debug para testar a funcionalidade
+        document.addEventListener('DOMContentLoaded', async function() {
+            const debugInfo = document.getElementById('debugInfo');
+            const gradeEventos = document.getElementById('gradeEventos');
+            
+            try {
+                // Verificar se usuário está logado
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+                debugInfo.innerHTML = `<strong>Usuário logado:</strong> ${usuario ? JSON.stringify(usuario) : 'Não logado'}<br>`;
+                
+                if (!usuario) {
+                    debugInfo.innerHTML += '<strong>Erro:</strong> Usuário não está logado. Redirecionando para login...';
+                    setTimeout(() => {
+                        window.location.href = '/paginas/pagina de cadastro/login.html';
+                    }, 2000);
+                    return;
+                }
+                
+                // Buscar eventos em que o usuário está inscrito
+                const url = `http://localhost:8080/eventos/inscritos/${usuario.id_usuario}`;
+                debugInfo.innerHTML += `<strong>URL da requisição:</strong> ${url}<br>`;
+                
+                const resposta = await fetch(url);
+                debugInfo.innerHTML += `<strong>Status da resposta:</strong> ${resposta.status}<br>`;
+                
+                if (!resposta.ok) {
+                    throw new Error(`Erro HTTP: ${resposta.status}`);
+                }
+                
+                const eventos = await resposta.json();
+                debugInfo.innerHTML += `<strong>Eventos encontrados:</strong> ${eventos.length}<br>`;
+                debugInfo.innerHTML += `<strong>Dados dos eventos:</strong> ${JSON.stringify(eventos, null, 2)}<br>`;
+                
+                // Exibir eventos
+                if (eventos.length === 0) {
+                    gradeEventos.innerHTML = '<p>Você ainda não se inscreveu em nenhum evento.</p>';
+                } else {
+                    gradeEventos.innerHTML = eventos.map(evento => `
+                        <div class="event-card" data-evento-id="${evento.id_evento}">
+                            <div class="event-date">
+                                <span class="day">${new Date(evento.data_inicio).getDate()}</span>
+                                <span class="month">${new Date(evento.data_inicio).toLocaleDateString('pt-BR', { month: 'short' })}</span>
+                            </div>
+                            <div class="event-info">
+                                <h3>${evento.titulo}</h3>
+                                <div class="event-location">📍 ${evento.local || 'Local a definir'}</div>
+                                <div class="event-time">🕒 ${evento.hora_inicio}</div>
+                                <div class="event-type">${evento.tipo_evento === 'online' ? '🌐 Online' : '📍 Presencial'}</div>
+                                <div class="event-category">${evento.categoria}</div>
+                                <div class="event-organizer">👤 ${evento.nome_organizador}</div>
+                                <div class="event-vagas">🎫 ${evento.inscritos || 0}/${evento.vagas_disponiveis} inscritos</div>
+                                <button class="btn-cancelar-inscricao" onclick="cancelarInscricao(${evento.id_evento})">Cancelar Inscrição</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                
+            } catch (erro) {
+                console.error('Erro:', erro);
+                debugInfo.innerHTML += `<strong>Erro:</strong> ${erro.message}<br>`;
+                gradeEventos.innerHTML = '<p>Erro ao carregar eventos. Verifique o console para mais detalhes.</p>';
+            }
+        });
+
+        // Função para cancelar inscrição
+        async function cancelarInscricao(idEvento) {
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+            if (!usuario) {
+                alert('Usuário não está logado');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8080/eventos/${idEvento}/inscrever`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id_usuario: usuario.id_usuario
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Inscrição cancelada com sucesso!');
+                    location.reload(); // Recarregar a página
+                } else {
+                    alert(data.message || 'Erro ao cancelar inscrição');
+                }
+            } catch (error) {
+                console.error('Erro ao cancelar inscrição:', error);
+                alert('Erro ao cancelar inscrição');
+            }
+        }
+    </script>
+</body>
+</html> 
